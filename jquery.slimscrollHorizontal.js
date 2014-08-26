@@ -73,10 +73,13 @@
         touchScrollStep : 200,
 
         // sets border radius
-        borderRadius: '7px',
+        borderRadius : '7px',
 
         // sets border radius of the rail
-        railBorderRadius : '7px'
+        railBorderRadius : '7px',
+
+        // attach scroll event handler
+        attachHandler : true
       };
 
       var o = $.extend(defaults, options);
@@ -320,8 +323,8 @@
           // prevent scrolling the page if necessary
           if(!releaseScroll)
           {
-  		      e.originalEvent.preventDefault();
-		      }
+            e.originalEvent.preventDefault();
+          }
           if (e.originalEvent.touches.length)
           {
             // see how far user swiped
@@ -352,7 +355,10 @@
         }
 
         // attach scroll events
-        attachWheel();
+        if (o.attachHandler)
+        {
+          attachWheel();
+        }
 
         function _onWheel(e)
         {
